@@ -5,14 +5,20 @@ import requests from '../Request';
 
 export default function Main() {
     const [movies, setMovies] = useState([]);
+    const [winSize, setWinSize] = useState(window.innerWidth);
 
-    const  winSize = window.innerWidth;
     const movie = movies[Math.floor(Math.random() * movies.length)]
 
     useEffect(() => {
         axios.get(requests.requestPopular).then((response) => {
             setMovies(response.data.results);
         });
+
+        function handleResize(){
+            setWinSize(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
     }, [])
 
     const truncateString = (str) => {
@@ -40,7 +46,7 @@ export default function Main() {
                     <button className='border text-white border-gray-300 py-2 px-5 ml-4'>Watch Later</button>
                 </div>
                 <p className='text-gray-400 text-sm'>Released: {movie?.release_date}</p>
-                <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>
+                <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200 text-justify'>
                     {truncateString(movie?.overview)}
                 </p>
             </div>
