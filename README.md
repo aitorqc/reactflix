@@ -5,4 +5,4 @@ https://reactflix-60a70.web.app/
 
 ## Capturas
 
-![alt Captura](https://github.com/aitorqc/reactflix/blob/main/public/Captura.png)
+![alt Captura](https://github.com/aitorqc/reactflix/blob/master/public/Captura.png)
